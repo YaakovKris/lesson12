@@ -100,7 +100,7 @@ def with_derived(events: DataFrame) -> DataFrame:
         events.withColumn("repo_owner", F.split("repo_name", "/").getItem(0))
         .withColumn(
             "is_bot",
-            F.coalesce(F.endswith("actor_login", BOT_SUFFIX), F.lit(False)),
+            F.coalesce(F.col("actor_login").endswith(BOT_SUFFIX), F.lit(False)),
         )
         .withColumn("hour", F.date_trunc("hour", F.col("created_at")))
     )
@@ -192,12 +192,15 @@ def build_summary(events: DataFrame, dimensions: list[str]) -> DataFrame:
 def write_outputs(outputs: dict[str, tuple[DataFrame, str | None]]) -> None:
     """Записати кожен mart у data/output/<name>/. SPEC.md → «Крок 10»."""
     for name, (df, partition_column) in outputs.items():
-        writer = df.write.mode("overwrite")
         if partition_column is None:
-            writer = writer.coalesce(1)
+            df.coalesce(1).write.mode("overwrite").parquet(f"{OUTPUT_DIR}/{name}")
         else:
-            writer = writer.repartition(partition_column).partitionBy(partition_column)
-        writer.parquet(f"{OUTPUT_DIR}/{name}")
+            (
+                df.repartition(partition_column)
+                .write.mode("overwrite")
+                .partitionBy(partition_column)
+                .parquet(f"{OUTPUT_DIR}/{name}")
+            )
 
 
 # ── Оркестрація (ДАНО) ────────────────────────────────────────────────────────
