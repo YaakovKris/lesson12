@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Thu Sep 10 16:25:15 IDT 2026:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-01a0-8b7e-742e-0000034efaa0 
+on database directory C:\Users\pivok\Documents\Data Engineering\lesson13-homework\lesson-13-spark-structured-data-2\metastore_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2c7b84de 
+Loaded from file:/C:/Users/pivok/Documents/Data%20Engineering/lesson13-homework/lesson-13-spark-structured-data-2/homework/.venv/Lib/site-packages/pyspark/jars/derby-10.16.1.1.jar
+java.vendor=Microsoft
+java.runtime.version=21.0.12.1+1-LTS
+user.dir=C:\Users\pivok\Documents\Data Engineering\lesson13-homework\lesson-13-spark-structured-data-2
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

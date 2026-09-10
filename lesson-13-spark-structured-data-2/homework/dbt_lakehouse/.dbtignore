@@ -1,0 +1,3 @@
+../data/landing/
+../data/landing/**
+*.json.gz

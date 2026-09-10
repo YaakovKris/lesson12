@@ -8,3 +8,13 @@ github_lakehouse:
       method: session
       schema: default
       host: localhost
+      server_side_parameters:
+        spark.sql.warehouse.dir: "spark-warehouse"
+        spark.sql.catalogImplementation: "hive"
+        spark.hadoop.javax.jdo.option.ConnectionURL: "jdbc:derby:metastore_db;create=true"
+        spark.hadoop.javax.jdo.option.ConnectionDriverName: "org.apache.derby.jdbc.EmbeddedDriver"
+        spark.hadoop.javax.jdo.option.ConnectionUserName: "APP"
+        spark.hadoop.javax.jdo.option.ConnectionPassword: "mine"
+        spark.hadoop.datanucleus.autoCreateSchema: "true"
+        spark.hadoop.datanucleus.fixedDatastore: "true"
+        spark.hadoop.datanucleus.schema.autoCreateAll: "true"
